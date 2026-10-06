@@ -46,13 +46,13 @@ AMP policy trained with this code: 21 km, 39th of 124 robots, and the
   <tr><th></th><th>Simulation</th><th>Real robot</th></tr>
   <tr>
     <td>PM01</td>
-    <td><video src="https://github.com/user-attachments/assets/a2fe6406-d0fd-4ab3-b620-f38c43a71d83" autoplay loop muted playsinline width="360"></video></td>
-    <td><video src="https://github.com/user-attachments/assets/45834470-b802-4df9-8653-14abc35d0582" autoplay loop muted playsinline width="360"></video></td>
+    <td><video src="https://github.com/user-attachments/assets/8370a082-8acd-4487-91cc-00ca6ce0b86b" autoplay loop muted playsinline width="360"></video></td>
+    <td><video src="https://github.com/user-attachments/assets/ac55476f-48b9-476c-a924-9ca6446c2818" autoplay loop muted playsinline width="360"></video></td>
   </tr>
   <tr>
     <td>Tienkung Ultra</td>
-    <td><video src="https://github.com/user-attachments/assets/61368439-c167-41ce-8c1d-399174973ce7" autoplay loop muted playsinline width="360"></video></td>
-    <td><video src="https://github.com/user-attachments/assets/2571d312-3468-4c7d-8a77-77bdf74c920f" autoplay loop muted playsinline width="360"></video></td>
+    <td><video src="https://github.com/user-attachments/assets/74939d8d-f568-4dd0-b5d2-e5f4a9f96ec6" autoplay loop muted playsinline width="360"></video></td>
+    <td><video src="https://github.com/user-attachments/assets/ea51e6ca-978b-4882-8e21-c456eec270f9" autoplay loop muted playsinline width="360"></video></td>
   </tr>
 </table>
 
