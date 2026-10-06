@@ -11,7 +11,7 @@
 [![License](https://img.shields.io/badge/license-Apache--2.0-yellow.svg)](LICENSE)
 
 Reinforcement-learning environments for humanoid robots, built on
-[mjlab](https://github.com/mujocolab/mjlab) and trained with [ics_rl](vendor/ics_rl), a fork of
+[mjlab](https://github.com/mujocolab/mjlab) and trained with [ics_rl](https://github.com/TUM-ICS/ics_rl), a fork of
 Instinct RL.
 
 **Beijing humanoid robot half marathon 2026.** The TUM team ran Tienkung Ultra (right) with the
