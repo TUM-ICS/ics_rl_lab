@@ -85,7 +85,7 @@ Motion data is not part of the repository; it lives under `data/motions/` (or `$
 The AMP clips are [MimicKit](https://github.com/xbpeng/MimicKit)'s human motions retargeted onto
 each robot.
 
-1. Download [MimicKit_Data.zip](https://1sfu-my.sharepoint.com/personal/xbpeng_sfu_ca/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fxbpeng%5Fsfu%5Fca%2FDocuments%2FMimicKit%2FMimicKit%5FData%2Ezip&parent=%2Fpersonal%2Fxbpeng%5Fsfu%5Fca%2FDocuments%2FMimicKit&ga=1) and unzip it into the data root:
+1. Download [MimicKit_Data.zip](https://1sfu-my.sharepoint.com/:u:/g/personal/xbpeng_sfu_ca/EclKq9pwdOBAl-17SogfMW0Bved4sodZBQ_5eZCiz9O--w?e=bqXBaa) and unzip it into the data root:
 
    ```bash
    unzip MimicKit_Data.zip -d data/motions/
