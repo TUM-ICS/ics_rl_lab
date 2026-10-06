@@ -1,0 +1,64 @@
+<!--
+  Hoverboard, converted from its URDF (hoverboard.urdf) with MuJoCo's own URDF compiler
+  (frames, masses and inertias exactly as compiled), then hand-edited:
+    * freejoint on base_link (the board is not fixed to the world)
+    * geoms named *_col / *_vis so mjlab's CollisionCfg can address them
+    * joint dynamics: plates damping=0.1 friction=0, wheels damping=0 friction=0 (the
+      URDF's <dynamics> values damping=1.0/0.1, friction=0.1 are not used)
+  Actuators are not declared here -- mjlab appends a <motor> per wheel from hoverboard_cfg.py.
+    * base_link mass 0.00577 kg -> 0.1 kg (inertia scaled by the same factor, 17.33x).
+      The URDF's base_link is a dummy connector; at 5.77 g (inertia ~5e-7) the mass matrix of
+      board + robot is too ill-conditioned for mujoco-warp's float32 solver and envs go NaN
+      within ~0.1 s (plain float64 MuJoCo is fine). 0.1 kg is ~1% of the board's mass.
+-->
+<mujoco model="hoverboard">
+  <compiler angle="radian" meshdir="meshes" autolimits="true" />
+  <default>
+    <joint damping="0" armature="0" frictionloss="0" />
+    <default class="visualgeom">
+      <geom type="mesh" rgba="0.3 0.3 0.3 1" contype="0" conaffinity="0" density="0" group="1" />
+    </default>
+    <default class="collisiongeom">
+      <geom rgba="0.8 0.2 0.2 1" group="3" />
+    </default>
+  </default>
+  <asset>
+    <mesh name="left_plate_vis" content_type="model/stl" file="left_plate_vis.stl" />
+    <mesh name="right_plate_vis" content_type="model/stl" file="right_plate_vis.stl" />
+    <mesh name="left_wheel_vis" content_type="model/stl" file="left_wheel_vis.stl" />
+    <mesh name="right_wheel_vis" content_type="model/stl" file="right_wheel_vis.stl" />
+  </asset>
+  <worldbody>
+    <body name="base_link" pos="0 0 0.086">
+      <freejoint name="root_joint" />
+      <inertial pos="0 0 0" quat="0.707107 0 0 0.707107" mass="0.1" diaginertia="1.5303e-05 7.955e-06 7.955e-06" />
+      <geom name="base_col" class="collisiongeom" type="cylinder" size="0.0175 0.003" quat="0.5 0.5 0.5 -0.5" />
+
+      <body name="left_plate_link" pos="0 0.1135 0">
+        <inertial pos="0 0 0" quat="0.5 0.5 -0.5 0.5" mass="2" diaginertia="0.0139062 0.00920683 0.00683267" />
+        <joint name="left_plate_joint" axis="0 1 0" range="-0.17 0.17" damping="0.1" />
+        <geom name="left_plate_vis" class="visualgeom" mesh="left_plate_vis" pos="0 -0.1105 0" quat="0.707107 0 0 -0.707107" />
+        <geom name="left_plate_col" class="collisiongeom" type="box" size="0.1105 0.093 0.04" />
+        <body name="left_wheel_link" pos="0 0.14365 0">
+          <inertial pos="0 0.005 0" quat="0.5 0.5 -0.5 0.5" mass="2.35" diaginertia="0.0077855 0.00475357 0.00475357" />
+          <joint name="left_wheel_joint" axis="0 1 0" />
+          <geom name="left_wheel_vis" class="visualgeom" mesh="left_wheel_vis" pos="0 -0.02815 0" quat="0.707107 0 0 -0.707107" />
+          <geom name="left_wheel_col" class="collisiongeom" type="cylinder" size="0.0814 0.03315" pos="0 0.005 0" quat="0.5 0.5 0.5 -0.5" />
+        </body>
+      </body>
+
+      <body name="right_plate_link" pos="0 -0.1135 0">
+        <inertial pos="0 0 0" quat="0.5 0.5 -0.5 0.5" mass="2" diaginertia="0.0139062 0.00920683 0.00683267" />
+        <joint name="right_plate_joint" axis="0 1 0" range="-0.17 0.17" damping="0.1" />
+        <geom name="right_plate_vis" class="visualgeom" mesh="right_plate_vis" pos="0 0.1105 0" quat="0.707107 0 0 -0.707107" />
+        <geom name="right_plate_col" class="collisiongeom" type="box" size="0.1105 0.093 0.04" />
+        <body name="right_wheel_link" pos="0 -0.14365 0">
+          <inertial pos="0 -0.005 0" quat="0.5 0.5 -0.5 0.5" mass="2.35" diaginertia="0.0077855 0.00475357 0.00475357" />
+          <joint name="right_wheel_joint" axis="0 1 0" />
+          <geom name="right_wheel_vis" class="visualgeom" mesh="right_wheel_vis" pos="0 0.02815 0" quat="0.707107 0 0 -0.707107" />
+          <geom name="right_wheel_col" class="collisiongeom" type="cylinder" size="0.0814 0.03315" pos="0 -0.005 0" quat="0.5 0.5 0.5 -0.5" />
+        </body>
+      </body>
+    </body>
+  </worldbody>
+</mujoco>

@@ -1,0 +1,149 @@
+<!-- MimicKit's 28-DoF humanoid (x/y/z hinge chains for the ball joints), the source model for
+     scripts/motion/retarget.py. Joint order = MimicKit's dof order. Kinematics only: visual
+     geoms, no collisions. Zero pose is a T-pose. -->
+<mujoco model="humanoid">
+  <compiler angle="radian"/>
+
+  <worldbody>
+    <body name="pelvis">
+      <inertial pos="0 0 0" mass="10" diaginertia="0.1 0.1 0.1"/>
+      <joint name="root" type="free"/>
+      <geom size="0.09" pos="0 0 0.07" contype="0" conaffinity="0" group="1" density="0" rgba="0.7 0.7 0.7 1"/>
+      <geom size="0.07" pos="0 0 0.205" contype="0" conaffinity="0" group="1" density="0" rgba="0.7 0.7 0.7 1"/>
+      <body name="torso_dummy_x" pos="0 0 0.236151">
+        <inertial pos="0 0 0" mass="0.1" diaginertia="0.01 0.01 0.01"/>
+        <joint name="abdomen_x" pos="0 0 0" axis="1 0 0" range="-1.05 1.05"/>
+        <body name="torso_dummy_y">
+          <inertial pos="0 0 0" mass="0.1" diaginertia="0.01 0.01 0.01"/>
+          <joint name="abdomen_y" pos="0 0 0" axis="0 1 0" range="-1.05 1.57"/>
+          <body name="torso">
+            <inertial pos="0 0 0" mass="5" diaginertia="0.1 0.1 0.1"/>
+            <joint name="abdomen_z" pos="0 0 0" axis="0 0 1" range="-1.22 1.22"/>
+            <geom size="0.11" pos="0 0 0.12" contype="0" conaffinity="0" group="1" density="0" rgba="0 0.5 0.8 1"/>
+            <geom size="0.045 0.05" pos="-0.011 -0.087 0.233" quat="0.703854 0.703294 -0.0705648 -0.070621" type="cylinder" contype="0" conaffinity="0" group="1" density="0" rgba="0.7 0.7 0.7 1"/>
+            <geom size="0.045 0.05" pos="-0.011 0.087 0.233" quat="0.703854 -0.703294 -0.0705648 0.070621" type="cylinder" contype="0" conaffinity="0" group="1" density="0" rgba="0.7 0.7 0.7 1"/>
+            <body name="head_dummy_x" pos="0 0 0.223894">
+              <inertial pos="0 0 0" mass="0.1" diaginertia="0.01 0.01 0.01"/>
+              <joint name="neck_x" pos="0 0 0" axis="1 0 0" range="-0.87 0.87"/>
+              <body name="head_dummy_y">
+                <inertial pos="0 0 0" mass="0.1" diaginertia="0.01 0.01 0.01"/>
+                <joint name="neck_y" pos="0 0 0" axis="0 1 0" range="-0.7 1.05"/>
+                <body name="head">
+                  <inertial pos="0 0 0" mass="1" diaginertia="0.1 0.1 0.1"/>
+                  <joint name="neck_z" pos="0 0 0" axis="0 0 1" range="-0.78 0.78"/>
+                  <geom size="0.095" pos="0 0 0.175" contype="0" conaffinity="0" group="1" density="0" rgba="0.7 0.7 0.7 1"/>
+                </body>
+              </body>
+            </body>
+            <body name="r_shoulder_dummy_x" pos="-0.02405 -0.18311 0.2435">
+              <inertial pos="0 0 0" mass="0.1" diaginertia="0.001 0.001 0.001"/>
+              <joint name="right_shoulder_x" pos="0 0 0" axis="1 0 0" range="-1.9 2.44"/>
+              <body name="r_shoulder_dummy_y">
+                <inertial pos="0 0 0" mass="0.1" diaginertia="0.001 0.001 0.001"/>
+                <joint name="right_shoulder_y" pos="0 0 0" axis="0 1 0" range="-1.57 1.57"/>
+                <body name="right_upper_arm">
+                  <inertial pos="0 0 0" mass="1" diaginertia="0.01 0.01 0.01"/>
+                  <joint name="right_shoulder_z" pos="0 0 0" axis="0 0 1" range="-1 2.8"/>
+                  <geom size="0.045 0.1" pos="0 -0.13 0" quat="0.707388 0.706825 0 0" type="cylinder" contype="0" conaffinity="0" group="1" density="0" rgba="0.7 0.7 0.7 1"/>
+                  <body name="right_lower_arm" pos="0 -0.274788 0">
+                    <inertial pos="0 0 0" mass="1" diaginertia="0.01 0.01 0.01"/>
+                    <joint name="right_elbow" pos="0 0 0" axis="0 0 1" range="0 2.8"/>
+                    <geom size="0.04 0.07625" pos="0 -0.111 0" quat="0.707388 0.706825 0 0" type="cylinder" contype="0" conaffinity="0" group="1" density="0" rgba="0.7 0.7 0.7 1"/>
+                    <body name="right_hand" pos="0 -0.258947 0">
+                      <inertial pos="0 0 0" mass="0.1" diaginertia="0.001 0.001 0.001"/>
+                      <geom size="0.04" contype="0" conaffinity="0" group="1" density="0" rgba="0.7 0.7 0.7 1"/>
+                    </body>
+                  </body>
+                </body>
+              </body>
+            </body>
+            <body name="l_shoulder_dummy_x" pos="-0.02405 0.18311 0.2435">
+              <inertial pos="0 0 0" mass="0.1" diaginertia="0.001 0.001 0.001"/>
+              <joint name="left_shoulder_x" pos="0 0 0" axis="1 0 0" range="-2.44 1.9"/>
+              <body name="l_shoulder_dummy_y">
+                <inertial pos="0 0 0" mass="0.1" diaginertia="0.001 0.001 0.001"/>
+                <joint name="left_shoulder_y" pos="0 0 0" axis="0 1 0" range="-1.57 1.57"/>
+                <body name="left_upper_arm">
+                  <inertial pos="0 0 0" mass="1" diaginertia="0.01 0.01 0.01"/>
+                  <joint name="left_shoulder_z" pos="0 0 0" axis="0 0 1" range="-2.8 1"/>
+                  <geom size="0.045 0.1" pos="0 0.13 0" quat="0.707388 0.706825 0 0" type="cylinder" contype="0" conaffinity="0" group="1" density="0" rgba="0.7 0.7 0.7 1"/>
+                  <body name="left_lower_arm" pos="0 0.274788 0">
+                    <inertial pos="0 0 0" mass="1" diaginertia="0.01 0.01 0.01"/>
+                    <joint name="left_elbow" pos="0 0 0" axis="0 0 1" range="-2.8 0"/>
+                    <geom size="0.04 0.07625" pos="0 0.111 0" quat="0.707388 0.706825 0 0" type="cylinder" contype="0" conaffinity="0" group="1" density="0" rgba="0.7 0.7 0.7 1"/>
+                    <body name="left_hand" pos="0 0.258947 0">
+                      <inertial pos="0 0 0" mass="0.1" diaginertia="0.001 0.001 0.001"/>
+                      <geom size="0.04" contype="0" conaffinity="0" group="1" density="0" rgba="0.7 0.7 0.7 1"/>
+                    </body>
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+      <body name="r_hip_dummy_x" pos="0 -0.084887 0">
+        <inertial pos="0 0 0" mass="0.1" diaginertia="0.001 0.001 0.001"/>
+        <joint name="right_hip_x" pos="0 0 0" axis="1 0 0" range="-1.05 0.52"/>
+        <body name="r_hip_dummy_y">
+          <inertial pos="0 0 0" mass="0.1" diaginertia="0.001 0.001 0.001"/>
+          <joint name="right_hip_y" pos="0 0 0" axis="0 1 0" range="-2.44 1.05"/>
+          <body name="right_thigh">
+            <inertial pos="0 0 0" mass="4" diaginertia="0.1 0.1 0.1"/>
+            <joint name="right_hip_z" pos="0 0 0" axis="0 0 1" range="-1.05 1.05"/>
+            <geom size="0.055 0.16" pos="0 0 -0.2" type="cylinder" contype="0" conaffinity="0" group="1" density="0" rgba="0.4 0.4 0.4 1"/>
+            <body name="right_shin" pos="0 0 -0.421546">
+              <inertial pos="0 0 0" mass="3" diaginertia="0.1 0.1 0.1"/>
+              <joint name="right_knee" pos="0 0 0" axis="0 1 0" range="0 2.8"/>
+              <geom size="0.05 0.1625" pos="0 0 -0.1925" type="cylinder" contype="0" conaffinity="0" group="1" density="0" rgba="0.4 0.4 0.4 1"/>
+              <body name="r_foot_dummy_x" pos="0 0 -0.40987">
+                <inertial pos="0 0 0" mass="0.1" diaginertia="0.001 0.001 0.001"/>
+                <joint name="right_ankle_x" pos="0 0 0" axis="1 0 0" range="-0.52 0.52"/>
+                <body name="r_foot_dummy_y">
+                  <inertial pos="0 0 0" mass="0.1" diaginertia="0.001 0.001 0.001"/>
+                  <joint name="right_ankle_y" pos="0 0 0" axis="0 1 0" range="-0.96 0.96"/>
+                  <body name="right_foot">
+                    <inertial pos="0 0 0" mass="1" diaginertia="0.01 0.01 0.01"/>
+                    <joint name="right_ankle_z" pos="0 0 0" axis="0 0 1" range="-0.7 0.7"/>
+                    <geom size="0.0885 0.045 0.0275" pos="0.045 0 -0.0225" type="box" contype="0" conaffinity="0" group="1" density="0" rgba="0 0.5 0.8 1"/>
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+      <body name="l_hip_dummy_x" pos="0 0.084887 0">
+        <inertial pos="0 0 0" mass="0.1" diaginertia="0.001 0.001 0.001"/>
+        <joint name="left_hip_x" pos="0 0 0" axis="1 0 0" range="-0.52 1.05"/>
+        <body name="l_hip_dummy_y">
+          <inertial pos="0 0 0" mass="0.1" diaginertia="0.001 0.001 0.001"/>
+          <joint name="left_hip_y" pos="0 0 0" axis="0 1 0" range="-2.44 1.05"/>
+          <body name="left_thigh">
+            <inertial pos="0 0 0" mass="4" diaginertia="0.1 0.1 0.1"/>
+            <joint name="left_hip_z" pos="0 0 0" axis="0 0 1" range="-1.05 1.05"/>
+            <geom size="0.055 0.16" pos="0 0 -0.2" type="cylinder" contype="0" conaffinity="0" group="1" density="0" rgba="0.4 0.4 0.4 1"/>
+            <body name="left_shin" pos="0 0 -0.421546">
+              <inertial pos="0 0 0" mass="3" diaginertia="0.1 0.1 0.1"/>
+              <joint name="left_knee" pos="0 0 0" axis="0 1 0" range="0 2.8"/>
+              <geom size="0.05 0.1625" pos="0 0 -0.1925" type="cylinder" contype="0" conaffinity="0" group="1" density="0" rgba="0.4 0.4 0.4 1"/>
+              <body name="l_foot_dummy_x" pos="0 0 -0.40987">
+                <inertial pos="0 0 0" mass="0.1" diaginertia="0.001 0.001 0.001"/>
+                <joint name="left_ankle_x" pos="0 0 0" axis="1 0 0" range="-0.52 0.52"/>
+                <body name="l_foot_dummy_y">
+                  <inertial pos="0 0 0" mass="0.1" diaginertia="0.001 0.001 0.001"/>
+                  <joint name="left_ankle_y" pos="0 0 0" axis="0 1 0" range="-0.96 0.96"/>
+                  <body name="left_foot">
+                    <inertial pos="0 0 0" mass="1" diaginertia="0.01 0.01 0.01"/>
+                    <joint name="left_ankle_z" pos="0 0 0" axis="0 0 1" range="-0.7 0.7"/>
+                    <geom size="0.0885 0.045 0.0275" pos="0.045 0 -0.0225" type="box" contype="0" conaffinity="0" group="1" density="0" rgba="0 0.5 0.8 1"/>
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+</mujoco>

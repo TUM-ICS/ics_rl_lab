@@ -1,0 +1,52 @@
+[project]
+name = "ics_rl_lab"
+version = "0.1.0"
+description = "Reinforcement-learning environments for humanoid robots, built on mjlab and trained with ics_rl"
+readme = "README.md"
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+requires-python = ">=3.11,<3.14"
+
+# This exact combination (mjlab 1.2.0 / mujoco-warp 3.6.0 / warp-lang 1.12.0) is known to
+# work together;
+# later mjlab releases changed env/robot-config APIs, and warp-lang >=1.14 removed
+# `wp.context` which mjlab 1.2.0's sim layer uses.
+dependencies = [
+  "mujoco==3.6.0",
+  "scipy>=1.15",
+  "mjlab==1.2.0",
+  "mujoco-warp==3.6.0",
+  "warp-lang==1.12.0",
+  "torch==2.10.0",
+  "ics_rl",
+  # mjlab asks for wandb>=0.22.3, which resolves to 0.30.0. But ics_rl's
+  # WandbSummaryWriter calls `wandb.Settings(start_method="thread")`, and wandb
+  # removed that field in 0.29.0 -- so the default logger dies at startup with a
+  # pydantic `extra_forbidden` error. 0.28.2 is the newest release that still
+  # accepts it.
+  "wandb<0.29",
+  "onnxruntime>=1.30.0",
+]
+
+[tool.uv.sources]
+ics_rl = { path = "vendor/ics_rl", editable = true }
+
+# mjlab discovers task packages through this entry point: `import mjlab` walks the
+# "mjlab.tasks" group and imports each, which runs our register_task() calls.
+[project.entry-points."mjlab.tasks"]
+ics_rl_lab = "ics_rl_lab.tasks"
+
+[build-system]
+requires = ["uv_build>=0.8.18,<0.9.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = ["ruff>=0.14", "pytest>=8.0"]
+
+[tool.ruff]
+indent-width = 2
+line-length = 100
+src = ["src"]
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I", "B"]

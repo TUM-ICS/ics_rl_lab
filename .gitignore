@@ -1,0 +1,41 @@
+# --- Python -------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+build/
+dist/
+wheels/
+*.egg-info/
+
+# --- Environments ---------------------------------------------------------------
+.venv/
+
+# --- Tool caches ------------------------------------------------------------------
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# --- Training artefacts -------------------------------------------------------------
+logs/
+runs/
+wandb/
+*.pt
+*.onnx
+*.log
+
+# --- Data (motion datasets are managed outside the repo, see src/ics_rl_lab/motion_lib/paths.py)
+data/
+
+# --- Personal tool settings
+.claude/settings.local.json
+
+# --- Editor / OS --------------------------------------------------------------------
+.vscode/
+.idea/
+.DS_Store
+nohup.out
+
+# NOTE: src/ics_rl_lab/assets/ (XML + meshes) IS committed on purpose. vendor/ics_rl/ is a
+# git submodule.
+
+# --- Local development notes (not published)
+Claude.md

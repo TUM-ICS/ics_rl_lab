@@ -1,0 +1,3 @@
+[submodule "vendor/ics_rl"]
+	path = vendor/ics_rl
+	url = https://github.com/TUM-ICS/ics_rl.git
