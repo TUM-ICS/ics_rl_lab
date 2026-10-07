@@ -29,7 +29,7 @@ AMP policy trained with this code: 21 km, 39th of 124 robots, and the
 
 - **EngineAI PM01**: all tasks; tested on the real robot
 - **Tienkung Ultra**: AMP; tested on the real robot, outdoors and in the half marathon
-- **EngineAI S2**: AMP, simulation only
+- **Ubtech Walker S2**: AMP, simulation only
 - **Unitree G1**: AMP, simulation only
 
 **Built with**
